@@ -15,7 +15,7 @@
         /**
          * @var bool If set to true, adds btn-sm class to the buttons
          */
-        public bool $use_small = true;
+        public bool $use_small = false;
 
         /**
          * @var string A string to be prepended to every icon class
