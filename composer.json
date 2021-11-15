@@ -1,6 +1,6 @@
 {
     "name": "unique/yii2-bs4-helpers",
-    "description": "Some random helpers for use in yii2 framework.",
+    "description": "Some random helpers for use in yii2 framework, using Bootstrap 4.",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
