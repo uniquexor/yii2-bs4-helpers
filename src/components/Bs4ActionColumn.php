@@ -5,6 +5,13 @@
     use yii\bootstrap4\Html;
     use yii\helpers\Url;
 
+    /**
+     * Warning! You must load Bootstrap icons asset yourself.
+     * One way of doing this could be add the following to your layout:
+     * ```
+     * <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+     * ```
+     */
     class Bs4ActionColumn extends \yii\grid\ActionColumn {
 
         /**
@@ -40,6 +47,23 @@
         public array $url = [];
 
         /**
+         * Allows to easily add aditional button definitions.
+         * Structure:
+         * [
+         *      (string) ButtonName => [
+         *          'url' => (string|array|Closure) {@see $url} for details,
+         *          'icon' => (string) BS4 icon's class for the button, without the 'bi' part. For example: 'bi bi-eye-fill' would just be 'eye-fill',
+         *          'additionalOptions' => (array) Any additional HTML attributes for the button,
+         *      ],
+         *      ...
+         * ]
+         *
+         * If no 'url' attribute is given for a button, then the button will not be output.
+         * @var array
+         */
+        public array $additional_buttons = [];
+
+        /**
          * @inheritdoc
          */
         protected function initDefaultButtons() {
@@ -50,6 +74,21 @@
                 'data-confirm' => Yii::t( 'yii', 'Are you sure you want to delete this item?' ),
                 'data-method' => 'post',
             ] );
+
+            foreach ( $this->additional_buttons as $name => $button ) {
+
+                $url = $button['url'] ?? null;
+                if ( $url ) {
+
+                    $this->initDefaultButton(
+                        $name,
+                        $button['icon'] ?? null,
+                        $button['additionalOptions'] ?? []
+                    );
+
+                    $this->url[ $name ] = $url;
+                }
+            }
         }
 
         /**
@@ -102,7 +141,6 @@
                 };
             }
         }
-
 
         /**
          * @inheritdoc
