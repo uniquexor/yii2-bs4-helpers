@@ -1,5 +1,5 @@
 <?php
-    namespace unique\yii2bs4helpers\components;
+    namespace unique\yii2bs4helpers\assets;
 
     use yii\web\AssetBundle;
 
