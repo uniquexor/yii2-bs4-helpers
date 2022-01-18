@@ -11,6 +11,7 @@
      * ```
      * <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
      * ```
+     * ...or use {@see BootstrapIconsAssets}
      */
     class Bs4ActionColumn extends \yii\grid\ActionColumn {
 
